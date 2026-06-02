@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Crypt0x News</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="theme-dark">
+  <header class="site-header">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <h1 class="site-title h4 mb-0">Crypt0x News — Admin</h1>
+        <a href="{{ url_for('index') }}" class="btn btn-sm export-dropdown-btn">← Dashboard</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container admin-panel">
+      <div class="admin-panel-header">
+        <h2 class="h5 mb-0">Cache &amp; fetch status</h2>
+        <p class="admin-panel-subtitle text-muted mb-0">Monitor record counts, freshness, and recent refresh activity.</p>
+      </div>
+
+      <div class="admin-stats-grid" id="admin-stats" aria-live="polite">
+        <article class="admin-stat-card">
+          <span class="admin-stat-label">Coins cached</span>
+          <span class="admin-stat-value" id="stat-coin-count">{{ status.coin_count }}</span>
+        </article>
+        <article class="admin-stat-card">
+          <span class="admin-stat-label">News cached</span>
+          <span class="admin-stat-value" id="stat-news-count">{{ status.news_count }}</span>
+        </article>
+        <article class="admin-stat-card">
+          <span class="admin-stat-label">Total records</span>
+          <span class="admin-stat-value" id="stat-total-records">{{ status.total_records }}</span>
+        </article>
+        <article class="admin-stat-card">
+          <span class="admin-stat-label">Last successful fetch</span>
+          <span class="admin-stat-value admin-stat-value--sm" id="stat-last-successful" data-iso="{{ status.last_successful_fetch or '' }}">—</span>
+        </article>
+        <article class="admin-stat-card">
+          <span class="admin-stat-label">Last attempt</span>
+          <span class="admin-stat-value admin-stat-value--sm" id="stat-last-updated" data-iso="{{ status.last_updated or '' }}">—</span>
+        </article>
+        <article class="admin-stat-card">
+          <span class="admin-stat-label">Cache status</span>
+          <span class="admin-stat-value" id="stat-stale-wrap">
+            {% if status.stale %}
+            <span class="admin-status-badge admin-status-badge--stale" id="stat-stale">Stale</span>
+            {% else %}
+            <span class="admin-status-badge admin-status-badge--fresh" id="stat-stale">Fresh</span>
+            {% endif %}
+          </span>
+        </article>
+      </div>
+
+      <div class="admin-actions">
+        <button type="button" class="btn btn-primary admin-refresh-btn" id="refresh-btn">
+          <span class="admin-refresh-label">Refresh now</span>
+          <span class="spinner-border spinner-border-sm admin-refresh-spinner d-none" id="refresh-spinner" role="status" aria-hidden="true"></span>
+        </button>
+        <p class="admin-refresh-message d-none" id="refresh-conflict" role="status">Already refreshing</p>
+        <p class="admin-refresh-message admin-refresh-message--error d-none" id="refresh-error" role="alert"></p>
+      </div>
+
+      <section class="admin-log-section" aria-labelledby="admin-log-heading">
+        <h3 class="h6 admin-log-heading" id="admin-log-heading">Recent fetch events</h3>
+        <div class="table-responsive admin-log-wrap">
+          <table class="table admin-log-table mb-0">
+            <thead>
+              <tr>
+                <th scope="col">Timestamp</th>
+                <th scope="col">Trigger</th>
+                <th scope="col">Status</th>
+                <th scope="col">Counts</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Errors</th>
+              </tr>
+            </thead>
+            <tbody id="admin-log-body">
+              {% for event in status.events[:10] %}
+              <tr>
+                <td class="admin-log-ts" data-iso="{{ event.timestamp }}">—</td>
+                <td>{{ event.trigger }}</td>
+                <td>
+                  <span class="admin-status-badge admin-status-badge--{{ event.status }}">{{ event.status }}</span>
+                </td>
+                <td>{{ event.coin_count }} / {{ event.news_count }}</td>
+                <td>{{ event.duration_ms }} ms</td>
+                <td class="admin-log-errors">
+                  {% if event.errors %}
+                  {{ event.errors | join(' · ') }}
+                  {% else %}
+                  <span class="text-muted">—</span>
+                  {% endif %}
+                </td>
+              </tr>
+              {% else %}
+              <tr>
+                <td colspan="6" class="text-muted text-center py-4">No fetch events logged yet.</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container text-center">
+      <p class="mb-0">
+        Created by <a href="https://github.com/xandermckie" target="_blank" rel="noopener noreferrer">Xander McKie</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function () {
+      const REFRESH_URL = "/admin/refresh";
+
+      function formatIso(iso) {
+        if (!iso) return "Never";
+        try {
+          const dt = new Date(iso);
+          if (Number.isNaN(dt.getTime())) return iso;
+          return dt.toLocaleString("en-US", {
+            timeZone: "America/Chicago",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true,
+            timeZoneName: "short",
+          });
+        } catch (_e) {
+          return iso;
+        }
+      }
+
+      function formatIsoFromPayload(iso, payload, field) {
+        const display = payload && payload[field + "_display"];
+        return display || formatIso(iso);
+      }
+
+      function applyTimestampCells(root) {
+        root.querySelectorAll("[data-iso]").forEach(function (el) {
+          const iso = el.getAttribute("data-iso");
+          if (iso) el.textContent = formatIso(iso);
+          else if (!el.textContent.trim() || el.textContent === "—") el.textContent = "Never";
+        });
+      }
+
+      function statusBadgeClass(status) {
+        if (status === "success" || status === "partial" || status === "failure") {
+          return "admin-status-badge admin-status-badge--" + status;
+        }
+        return "admin-status-badge";
+      }
+
+      function renderStale(stale) {
+        const el = document.getElementById("stat-stale");
+        if (!el) return;
+        el.textContent = stale ? "Stale" : "Fresh";
+        el.className = stale
+          ? "admin-status-badge admin-status-badge--stale"
+          : "admin-status-badge admin-status-badge--fresh";
+      }
+
+      function updateStats(data) {
+        document.getElementById("stat-coin-count").textContent = data.coin_count;
+        document.getElementById("stat-news-count").textContent = data.news_count;
+        document.getElementById("stat-total-records").textContent = data.total_records;
+
+        const lastSuccess = document.getElementById("stat-last-successful");
+        lastSuccess.setAttribute("data-iso", data.last_successful_fetch || "");
+        lastSuccess.textContent = formatIsoFromPayload(
+          data.last_successful_fetch,
+          data,
+          "last_successful_fetch"
+        );
+
+        const lastUpdated = document.getElementById("stat-last-updated");
+        lastUpdated.setAttribute("data-iso", data.last_updated || "");
+        lastUpdated.textContent = formatIsoFromPayload(data.last_updated, data, "last_updated");
+
+        renderStale(Boolean(data.stale));
+      }
+
+      function renderLog(events) {
+        const tbody = document.getElementById("admin-log-body");
+        const rows = (events || []).slice(0, 10);
+
+        if (!rows.length) {
+          tbody.innerHTML =
+            '<tr><td colspan="6" class="text-muted text-center py-4">No fetch events logged yet.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = rows
+          .map(function (event) {
+            const errors =
+              event.errors && event.errors.length
+                ? event.errors.map(function (e) { return escapeHtml(String(e)); }).join(" · ")
+                : '<span class="text-muted">—</span>';
+            return (
+              "<tr>" +
+              '<td class="admin-log-ts" data-iso="' + escapeAttr(event.timestamp || "") + '">' +
+              escapeHtml(formatIso(event.timestamp)) +
+              "</td>" +
+              "<td>" + escapeHtml(event.trigger || "") + "</td>" +
+              '<td><span class="' + statusBadgeClass(event.status) + '">' +
+              escapeHtml(event.status || "") +
+              "</span></td>" +
+              "<td>" + escapeHtml(String(event.coin_count)) + " / " + escapeHtml(String(event.news_count)) + "</td>" +
+              "<td>" + escapeHtml(String(event.duration_ms)) + " ms</td>" +
+              '<td class="admin-log-errors">' + errors + "</td>" +
+              "</tr>"
+            );
+          })
+          .join("");
+      }
+
+      function escapeHtml(str) {
+        return str
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function escapeAttr(str) {
+        return escapeHtml(str).replace(/'/g, "&#39;");
+      }
+
+      function setRefreshing(isRefreshing) {
+        const btn = document.getElementById("refresh-btn");
+        const spinner = document.getElementById("refresh-spinner");
+        const conflict = document.getElementById("refresh-conflict");
+        const errorEl = document.getElementById("refresh-error");
+        btn.disabled = isRefreshing;
+        spinner.classList.toggle("d-none", !isRefreshing);
+        if (isRefreshing) {
+          conflict.classList.add("d-none");
+          errorEl.classList.add("d-none");
+          errorEl.textContent = "";
+        }
+      }
+
+      function showConflict() {
+        document.getElementById("refresh-conflict").classList.remove("d-none");
+      }
+
+      function showError(message) {
+        const errorEl = document.getElementById("refresh-error");
+        errorEl.textContent = message;
+        errorEl.classList.remove("d-none");
+      }
+
+      async function onRefreshClick() {
+        setRefreshing(true);
+        try {
+          const res = await fetch(REFRESH_URL, { method: "POST", headers: { Accept: "application/json" } });
+          if (res.status === 409) {
+            showConflict();
+            return;
+          }
+          if (!res.ok) {
+            let msg = "Refresh failed (" + res.status + ").";
+            try {
+              const body = await res.json();
+              if (body && body.error) msg = body.error;
+            } catch (_e) { /* ignore */ }
+            showError(msg);
+            return;
+          }
+          const data = await res.json();
+          updateStats(data);
+          renderLog(data.events);
+        } catch (_e) {
+          showError("Network error. Please try again.");
+        } finally {
+          setRefreshing(false);
+        }
+      }
+
+      document.getElementById("refresh-btn").addEventListener("click", onRefreshClick);
+      applyTimestampCells(document);
+    })();
+  </script>
+</body>
+</html>

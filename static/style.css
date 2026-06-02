@@ -490,3 +490,191 @@ body.theme-light .alert-warning {
 body.theme-light .text-muted {
   color: var(--text-muted) !important;
 }
+
+/* Admin panel */
+.admin-panel {
+  max-width: 1100px;
+}
+
+.admin-panel-header {
+  margin-bottom: 1.5rem;
+}
+
+.admin-panel-subtitle {
+  font-size: 0.9rem;
+  margin-top: 0.35rem;
+}
+
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+@media (max-width: 991.98px) {
+  .admin-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .admin-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-stat-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-height: 5.5rem;
+}
+
+.admin-stat-label {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.admin-stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.admin-stat-value--sm {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.admin-status-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  line-height: 1.2;
+}
+
+.admin-status-badge--success {
+  background: rgba(34, 197, 94, 0.2);
+  color: var(--positive);
+  border: 1px solid rgba(34, 197, 94, 0.45);
+}
+
+.admin-status-badge--partial {
+  background: rgba(234, 179, 8, 0.2);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.45);
+}
+
+body.theme-light .admin-status-badge--partial {
+  color: #a16207;
+}
+
+.admin-status-badge--failure {
+  background: rgba(239, 68, 68, 0.2);
+  color: var(--negative);
+  border: 1px solid rgba(239, 68, 68, 0.45);
+}
+
+.admin-status-badge--fresh {
+  background: rgba(34, 197, 94, 0.2);
+  color: var(--positive);
+  border: 1px solid rgba(34, 197, 94, 0.45);
+}
+
+.admin-status-badge--stale {
+  background: rgba(234, 179, 8, 0.2);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.45);
+}
+
+body.theme-light .admin-status-badge--stale {
+  color: #a16207;
+}
+
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.admin-refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 8.5rem;
+}
+
+.admin-refresh-btn:disabled {
+  opacity: 0.75;
+}
+
+.admin-refresh-message {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #eab308;
+}
+
+.admin-refresh-message--error {
+  color: var(--negative);
+}
+
+.admin-log-section {
+  margin-bottom: 2rem;
+}
+
+.admin-log-heading {
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.admin-log-wrap {
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--panel);
+}
+
+.admin-log-table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--text);
+  --bs-table-border-color: rgba(148, 163, 184, 0.15);
+  margin-bottom: 0;
+}
+
+.admin-log-table thead th {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  border-bottom-width: 1px;
+  white-space: nowrap;
+}
+
+.admin-log-table tbody td {
+  font-size: 0.875rem;
+  vertical-align: middle;
+}
+
+.admin-log-ts {
+  white-space: nowrap;
+}
+
+.admin-log-errors {
+  max-width: 18rem;
+  word-break: break-word;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
