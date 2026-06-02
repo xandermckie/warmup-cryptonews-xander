@@ -44,6 +44,17 @@
 
           {% endif %}
 
+          <div class="dropdown export-dropdown">
+            <button class="btn btn-sm export-dropdown-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Export
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="{{ url_for('export_csv') }}?dataset=coins">Coins (CSV)</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('export_csv') }}?dataset=news">News (CSV)</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('export_csv') }}?dataset=all">Both (ZIP)</a></li>
+            </ul>
+          </div>
+
         </div>
 
       </div>
@@ -204,6 +215,7 @@
 
   </script>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 
   <script src="{{ url_for('static', filename='app.js') }}"></script>

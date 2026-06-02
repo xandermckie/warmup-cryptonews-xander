@@ -1,7 +1,8 @@
 """Flask routes only — no business logic."""
 
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, Response, jsonify, render_template, request
 
+from exporter import VALID_DATASETS, build_export
 from favorites import get_favorites, is_valid_client_id, toggle_favorite
 from fetcher import (
     MAX_QUERY_LENGTH,
@@ -43,6 +44,21 @@ def search():
     if len(q) > MAX_QUERY_LENGTH:
         return jsonify({"error": f"Query must be at most {MAX_QUERY_LENGTH} characters."}), 400
     return jsonify(filter_cache(q))
+
+
+@app.route("/export/csv")
+def export_csv():
+    """Download cached coins and/or news as CSV (or ZIP for both)."""
+    dataset = request.args.get("dataset", "").strip().lower()
+    if dataset not in VALID_DATASETS:
+        return jsonify({"error": "dataset must be coins, news, or all."}), 400
+
+    content, filename, mimetype = build_export(dataset)
+    return Response(
+        content,
+        mimetype=mimetype,
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+    )
 
 
 @app.route("/favorites")

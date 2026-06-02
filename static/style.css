@@ -63,6 +63,36 @@ body.modal-open {
   font-size: 0.75rem;
 }
 
+.export-dropdown-btn {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+.export-dropdown-btn:hover,
+.export-dropdown-btn:focus,
+.export-dropdown-btn.show {
+  background: var(--panel-hover);
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.export-dropdown .dropdown-menu {
+  background: var(--panel);
+  border: 1px solid var(--border);
+}
+
+.export-dropdown .dropdown-item {
+  color: var(--text);
+}
+
+.export-dropdown .dropdown-item:hover,
+.export-dropdown .dropdown-item:focus {
+  background: var(--panel-hover);
+  color: var(--accent);
+}
+
 .ticker-wrap {
   background: var(--ticker-bg);
   border-bottom: 1px solid var(--border);
