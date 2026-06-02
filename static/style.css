@@ -186,6 +186,43 @@ body.modal-open {
   max-width: 16rem;
 }
 
+.coin-card-wrap {
+  position: relative;
+}
+
+.coin-card-wrap.is-favorite .coin-card {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-soft);
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  width: 2rem;
+  height: 2rem;
+  line-height: 1;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.favorite-btn:hover {
+  color: #facc15;
+  border-color: #facc15;
+  transform: scale(1.08);
+}
+
+.favorite-btn.is-favorite {
+  color: #facc15;
+  border-color: #facc15;
+}
+
 .coin-card-btn {
   all: unset;
   display: block;

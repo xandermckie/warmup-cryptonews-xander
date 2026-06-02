@@ -2,6 +2,7 @@
 
 from flask import Flask, jsonify, render_template, request
 
+from favorites import get_favorites, is_valid_client_id, toggle_favorite
 from fetcher import (
     MAX_QUERY_LENGTH,
     VALID_CHART_DAYS,
@@ -42,6 +43,30 @@ def search():
     if len(q) > MAX_QUERY_LENGTH:
         return jsonify({"error": f"Query must be at most {MAX_QUERY_LENGTH} characters."}), 400
     return jsonify(filter_cache(q))
+
+
+@app.route("/favorites")
+def favorites_list():
+    """Return the current client's starred coin ids (ordered)."""
+    client_id = request.headers.get("X-Client-Id", "").strip().lower()
+    if not is_valid_client_id(client_id):
+        return jsonify({"error": "Valid X-Client-Id header is required."}), 400
+    return jsonify({"favorites": get_favorites(client_id)})
+
+
+@app.route("/favorites/<coin_id>", methods=["POST"])
+def favorites_toggle(coin_id):
+    """Toggle a coin in the client's favorites and persist to data/favorites.json."""
+    client_id = request.headers.get("X-Client-Id", "").strip().lower()
+    if not is_valid_client_id(client_id):
+        return jsonify({"error": "Valid X-Client-Id header is required."}), 400
+
+    coin_id = str(coin_id).strip().lower()
+    try:
+        favorites, is_favorited = toggle_favorite(client_id, coin_id)
+        return jsonify({"favorites": favorites, "is_favorited": is_favorited})
+    except ValueError as exc:
+        return jsonify({"error": str(exc)}), 400
 
 
 

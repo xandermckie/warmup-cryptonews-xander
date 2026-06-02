@@ -15,6 +15,9 @@
   let currentSort = 'rank';
   let searchActive = false;
   const THEME_STORAGE_KEY = 'cryptox-theme';
+  const CLIENT_ID_KEY = 'cryptox-client-id';
+  // Ordered coin ids starred by this browser; synced with data/favorites.json.
+  let favoriteIds = [];
 
   // --- Formatting helpers --------------------------------------------------
   function formatLastUpdated(iso) {
@@ -118,6 +121,71 @@
     return sorted;
   }
 
+  /**
+   * Pin starred coins to the top in the order the user starred them.
+   * Non-favorites keep their sort order from sortCoins().
+   */
+  function pinFavorites(coins) {
+    if (!favoriteIds.length) return coins;
+
+    const visibleById = new Map(coins.map((coin) => [coin.id, coin]));
+    const pinned = favoriteIds
+      .map((id) => visibleById.get(id))
+      .filter(Boolean);
+    const favoriteSet = new Set(favoriteIds);
+    const rest = coins.filter((coin) => !favoriteSet.has(coin.id));
+    return [...pinned, ...rest];
+  }
+
+  function isFavorite(coinId) {
+    return favoriteIds.includes(coinId);
+  }
+
+  function getClientId() {
+    let clientId = localStorage.getItem(CLIENT_ID_KEY);
+    if (!clientId) {
+      clientId = crypto.randomUUID();
+      localStorage.setItem(CLIENT_ID_KEY, clientId);
+    }
+    return clientId;
+  }
+
+  function favoritesHeaders() {
+    return { 'X-Client-Id': getClientId() };
+  }
+
+  async function loadFavorites() {
+    try {
+      const res = await fetch('/favorites', { headers: favoritesHeaders() });
+      const data = await res.json();
+      if (!res.ok) {
+        console.error(data.error || 'Failed to load favorites');
+        return;
+      }
+      favoriteIds = data.favorites || [];
+    } catch (err) {
+      console.error('Favorites request failed', err);
+    }
+  }
+
+  async function toggleFavorite(coinId) {
+    try {
+      const res = await fetch(`/favorites/${encodeURIComponent(coinId)}`, {
+        method: 'POST',
+        headers: favoritesHeaders(),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.error(data.error || 'Failed to update favorite');
+        return;
+      }
+      favoriteIds = data.favorites || [];
+      renderCoins(getSortedDisplayCoins());
+    } catch (err) {
+      console.error('Favorite toggle failed', err);
+    }
+  }
+
   // --- Rendering ------------------------------------------------------------
   function buildTickerItem(coin) {
     const pct = coin.price_change_percentage_24h;
@@ -153,21 +221,31 @@
     grid.innerHTML = coins.map((coin) => {
       const pct = coin.price_change_percentage_24h;
       const cls = changeClass(pct);
+      const starred = isFavorite(coin.id);
       return `
         <div class="col-sm-6 col-md-4">
-          <button type="button" class="coin-card-btn" data-coin-id="${escapeHtml(coin.id)}" aria-label="View details for ${escapeHtml(coin.name)}">
-            <div class="card coin-card h-100">
-              <div class="card-body d-flex align-items-center gap-3">
-                <img src="${escapeHtml(coin.image)}" alt="${escapeHtml(coin.name)}">
-                <div class="text-start">
-                  <div class="fw-semibold">${escapeHtml(coin.name)}</div>
-                  <div class="text-muted small text-uppercase">#${coin.market_cap_rank ?? '—'} · ${escapeHtml(coin.symbol)}</div>
-                  <div class="coin-price mt-1">${formatPrice(coin.current_price)}</div>
-                  <div class="small ${cls}">${formatChange(pct)} (24h)</div>
+          <div class="coin-card-wrap${starred ? ' is-favorite' : ''}">
+            <button
+              type="button"
+              class="favorite-btn${starred ? ' is-favorite' : ''}"
+              data-favorite-id="${escapeHtml(coin.id)}"
+              aria-label="${starred ? 'Unstar' : 'Star'} ${escapeHtml(coin.name)}"
+              aria-pressed="${starred}"
+            >★</button>
+            <button type="button" class="coin-card-btn" data-coin-id="${escapeHtml(coin.id)}" aria-label="View details for ${escapeHtml(coin.name)}">
+              <div class="card coin-card h-100">
+                <div class="card-body d-flex align-items-center gap-3">
+                  <img src="${escapeHtml(coin.image)}" alt="${escapeHtml(coin.name)}">
+                  <div class="text-start">
+                    <div class="fw-semibold">${escapeHtml(coin.name)}</div>
+                    <div class="text-muted small text-uppercase">#${coin.market_cap_rank ?? '—'} · ${escapeHtml(coin.symbol)}</div>
+                    <div class="coin-price mt-1">${formatPrice(coin.current_price)}</div>
+                    <div class="small ${cls}">${formatChange(pct)} (24h)</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </button>
+            </button>
+          </div>
         </div>`;
     }).join('');
   }
@@ -227,7 +305,7 @@
   }
 
   function getSortedDisplayCoins() {
-    return sortCoins(displayCoins, currentSort);
+    return pinFavorites(sortCoins(displayCoins, currentSort));
   }
 
   function renderAll(coins, news, lastUpdated, stale) {
@@ -514,6 +592,12 @@
 
   function initModal() {
     document.getElementById('coin-grid').addEventListener('click', (event) => {
+      const favoriteBtn = event.target.closest('[data-favorite-id]');
+      if (favoriteBtn) {
+        event.stopPropagation();
+        toggleFavorite(favoriteBtn.dataset.favoriteId);
+        return;
+      }
       const btn = event.target.closest('[data-coin-id]');
       if (!btn) return;
       loadCoinDetail(btn.dataset.coinId, 7);
@@ -568,8 +652,13 @@
   });
 
   // --- Boot -----------------------------------------------------------------
-  renderPickOfDay(initialData.pick_of_day);
-  renderAll(initialData.coins, initialData.news, initialData.last_updated, initialData.stale);
-  initTheme();
-  initModal();
+  async function boot() {
+    await loadFavorites();
+    renderPickOfDay(initialData.pick_of_day);
+    renderAll(initialData.coins, initialData.news, initialData.last_updated, initialData.stale);
+    initTheme();
+    initModal();
+  }
+
+  boot();
 })();
