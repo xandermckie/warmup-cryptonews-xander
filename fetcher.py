@@ -39,6 +39,103 @@ def _empty_cache() -> dict:
     }
 
 
+def _normalize_string_list(value) -> list[str]:
+    """Coerce a cache field to a list of strings; drop invalid entries."""
+    if not isinstance(value, list):
+        return []
+    return [str(item) for item in value if item is not None and str(item).strip()]
+
+
+def _normalize_coin_list(value) -> list[dict]:
+    """Keep only dict coins that include a string id."""
+    if not isinstance(value, list):
+        return []
+    coins: list[dict] = []
+    for item in value:
+        if isinstance(item, dict) and isinstance(item.get("id"), str) and item["id"].strip():
+            coins.append(item)
+    return coins
+
+
+def _normalize_news_list(value) -> list[dict]:
+    """Keep only dict news articles."""
+    if not isinstance(value, list):
+        return []
+    return [item for item in value if isinstance(item, dict)]
+
+
+def _normalize_pick_of_day(value) -> dict | None:
+    """Accept pick_of_day only when it is a dict with a valid coin id."""
+    if not isinstance(value, dict):
+        return None
+    coin_id = value.get("id")
+    if not isinstance(coin_id, str) or not coin_id.strip():
+        return None
+    return value
+
+
+def _normalize_stale(value, key_present: bool) -> bool:
+    """Coerce stale flag to bool; default True when missing or malformed."""
+    if not key_present:
+        return True
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        return value.strip().lower() in {"true", "1", "yes"}
+    return True
+
+
+def _normalize_last_updated(value) -> str | None:
+    """Keep last_updated only when it is a non-empty string."""
+    if isinstance(value, str) and value.strip():
+        return value.strip()
+    return None
+
+
+def _normalize_cache(data) -> dict:
+    """
+    Validate and coerce parsed JSON into a safe cache dict.
+
+    Handles top-level non-dicts, null lists, and wrong field types without raising.
+    """
+    if not isinstance(data, dict):
+        return _empty_cache()
+
+    stale_key_present = "stale" in data
+    normalized = {
+        "last_updated": _normalize_last_updated(data.get("last_updated")),
+        "stale": _normalize_stale(data.get("stale"), stale_key_present),
+        "fetch_errors": _normalize_string_list(data.get("fetch_errors")),
+        "coins": _normalize_coin_list(data.get("coins")),
+        "news": _normalize_news_list(data.get("news")),
+        "pick_of_day": _normalize_pick_of_day(data.get("pick_of_day")),
+    }
+
+    # Record structural repair so the UI can explain missing data if needed.
+    repairs: list[str] = []
+    if "coins" in data and not isinstance(data.get("coins"), list):
+        repairs.append("Cache coins entry was invalid and was reset.")
+    if "news" in data and not isinstance(data.get("news"), list):
+        repairs.append("Cache news entry was invalid and was reset.")
+    if repairs:
+        normalized["fetch_errors"] = normalized["fetch_errors"] + repairs
+        normalized["stale"] = True
+
+    return normalized
+
+
+def load_cache() -> dict:
+    """Read cache from disk; return empty skeleton if missing, unreadable, or invalid."""
+    if not CACHE_PATH.is_file():
+        return _empty_cache()
+    try:
+        with open(CACHE_PATH, encoding="utf-8") as f:
+            data = json.load(f)
+        return _normalize_cache(data)
+    except (json.JSONDecodeError, OSError, UnicodeDecodeError, TypeError, ValueError, MemoryError):
+        return _empty_cache()
+
+
 def _strip_html(html: str) -> str:
     """Remove HTML tags from CoinGecko description strings."""
     return re.sub(r"<[^>]+>", "", html or "").strip()
@@ -68,25 +165,6 @@ def _is_rate_limited(exc: requests.RequestException) -> bool:
     """Return True when CoinGecko rejected the call for exceeding rate limits."""
     response = getattr(exc, "response", None)
     return response is not None and response.status_code == 429
-
-
-def load_cache() -> dict:
-    """Read cache from disk; return empty skeleton if missing or corrupt."""
-    if not CACHE_PATH.exists():
-        return _empty_cache()
-    try:
-        with open(CACHE_PATH, encoding="utf-8") as f:
-            data = json.load(f)
-        for key in ("coins", "news", "fetch_errors"):
-            if key not in data:
-                data[key] = []
-        if "stale" not in data:
-            data["stale"] = True
-        if "pick_of_day" not in data:
-            data["pick_of_day"] = None
-        return data
-    except (json.JSONDecodeError, OSError):
-        return _empty_cache()
 
 
 def save_cache(data: dict) -> None:
