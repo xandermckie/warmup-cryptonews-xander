@@ -1,5 +1,6 @@
 {
-  "last_updated": "2026-06-02T17:58:03Z",
+  "last_updated": "2026-06-02T20:33:21Z",
+  "last_successful_fetch": "2026-06-02T20:33:21Z",
   "stale": false,
   "fetch_errors": [],
   "coins": [
@@ -8,11 +9,11 @@
       "symbol": "btc",
       "name": "Bitcoin",
       "image": "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400",
-      "current_price": 67355,
-      "price_change_percentage_24h": -5.91628,
+      "current_price": 66942,
+      "price_change_percentage_24h": -6.4054,
       "market_cap_rank": 1,
       "ath": 126080,
-      "ath_change_percentage": -46.57768,
+      "ath_change_percentage": -46.90473,
       "genesis_date": "2009-01-03"
     },
     {
@@ -20,11 +21,11 @@
       "symbol": "eth",
       "name": "Ethereum",
       "image": "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628",
-      "current_price": 1919.99,
-      "price_change_percentage_24h": -3.46192,
+      "current_price": 1895.74,
+      "price_change_percentage_24h": -5.35848,
       "market_cap_rank": 2,
       "ath": 4946.05,
-      "ath_change_percentage": -61.18117,
+      "ath_change_percentage": -61.67166,
       "genesis_date": "2015-07-30"
     },
     {
@@ -32,11 +33,11 @@
       "symbol": "usdt",
       "name": "Tether",
       "image": "https://coin-images.coingecko.com/coins/images/325/large/Tether.png?1696501661",
-      "current_price": 0.998465,
-      "price_change_percentage_24h": -0.017,
+      "current_price": 0.998459,
+      "price_change_percentage_24h": -0.0269,
       "market_cap_rank": 3,
       "ath": 1.32,
-      "ath_change_percentage": -24.53623,
+      "ath_change_percentage": -24.53451,
       "genesis_date": null
     },
     {
@@ -44,35 +45,35 @@
       "symbol": "bnb",
       "name": "BNB",
       "image": "https://coin-images.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1696501970",
-      "current_price": 665.95,
-      "price_change_percentage_24h": -3.10032,
+      "current_price": 656.33,
+      "price_change_percentage_24h": -5.92629,
       "market_cap_rank": 4,
       "ath": 1369.99,
-      "ath_change_percentage": -51.39029,
+      "ath_change_percentage": -52.09217,
       "genesis_date": "2017-07-08"
-    },
-    {
-      "id": "ripple",
-      "symbol": "xrp",
-      "name": "XRP",
-      "image": "https://coin-images.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1696501442",
-      "current_price": 1.24,
-      "price_change_percentage_24h": -4.93997,
-      "market_cap_rank": 5,
-      "ath": 3.65,
-      "ath_change_percentage": -66.12267,
-      "genesis_date": null
     },
     {
       "id": "usd-coin",
       "symbol": "usdc",
       "name": "USDC",
       "image": "https://coin-images.coingecko.com/coins/images/6319/large/USDC.png?1769615602",
-      "current_price": 0.999724,
-      "price_change_percentage_24h": 0.00699,
-      "market_cap_rank": 6,
+      "current_price": 0.999644,
+      "price_change_percentage_24h": 0.00017,
+      "market_cap_rank": 5,
       "ath": 1.043,
-      "ath_change_percentage": -4.19698,
+      "ath_change_percentage": -4.19388,
+      "genesis_date": null
+    },
+    {
+      "id": "ripple",
+      "symbol": "xrp",
+      "name": "XRP",
+      "image": "https://coin-images.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1696501442",
+      "current_price": 1.21,
+      "price_change_percentage_24h": -6.27149,
+      "market_cap_rank": 6,
+      "ath": 3.65,
+      "ath_change_percentage": -66.70546,
       "genesis_date": null
     },
     {
@@ -80,11 +81,11 @@
       "symbol": "sol",
       "name": "Solana",
       "image": "https://coin-images.coingecko.com/coins/images/4128/large/solana.png?1718769756",
-      "current_price": 76.73,
-      "price_change_percentage_24h": -5.12628,
+      "current_price": 74.87,
+      "price_change_percentage_24h": -7.5698,
       "market_cap_rank": 7,
       "ath": 293.31,
-      "ath_change_percentage": -73.8408,
+      "ath_change_percentage": -74.47355,
       "genesis_date": null
     },
     {
@@ -92,11 +93,11 @@
       "symbol": "trx",
       "name": "TRON",
       "image": "https://coin-images.coingecko.com/coins/images/1094/large/photo_2026-04-13_09-59-16.png?1776048311",
-      "current_price": 0.337741,
-      "price_change_percentage_24h": -2.21735,
+      "current_price": 0.334805,
+      "price_change_percentage_24h": -2.49779,
       "market_cap_rank": 8,
       "ath": 0.431288,
-      "ath_change_percentage": -21.69011,
+      "ath_change_percentage": -22.37098,
       "genesis_date": null
     },
     {
@@ -105,10 +106,10 @@
       "name": "Figure Heloc",
       "image": "https://coin-images.coingecko.com/coins/images/68480/large/figure.png?1755863954",
       "current_price": 1.033,
-      "price_change_percentage_24h": -1.00541,
+      "price_change_percentage_24h": -0.8951,
       "market_cap_rank": 9,
       "ath": 1.049,
-      "ath_change_percentage": -1.5014,
+      "ath_change_percentage": -1.53392,
       "genesis_date": null
     },
     {
@@ -116,11 +117,11 @@
       "symbol": "hype",
       "name": "Hyperliquid",
       "image": "https://coin-images.coingecko.com/coins/images/50882/large/hyperliquid.jpg?1729431300",
-      "current_price": 72.38,
-      "price_change_percentage_24h": -0.72902,
+      "current_price": 69.8,
+      "price_change_percentage_24h": -4.04378,
       "market_cap_rank": 10,
       "ath": 75.48,
-      "ath_change_percentage": -4.10052,
+      "ath_change_percentage": -7.53021,
       "genesis_date": null
     },
     {
@@ -128,11 +129,11 @@
       "symbol": "doge",
       "name": "Dogecoin",
       "image": "https://coin-images.coingecko.com/coins/images/5/large/dogecoin.png?1696501409",
-      "current_price": 0.095586,
-      "price_change_percentage_24h": -4.46306,
+      "current_price": 0.093334,
+      "price_change_percentage_24h": -7.09504,
       "market_cap_rank": 11,
       "ath": 0.731578,
-      "ath_change_percentage": -86.93426,
+      "ath_change_percentage": -87.24214,
       "genesis_date": null
     },
     {
@@ -140,11 +141,11 @@
       "symbol": "usds",
       "name": "USDS",
       "image": "https://coin-images.coingecko.com/coins/images/39926/large/usds.webp?1726666683",
-      "current_price": 0.999608,
-      "price_change_percentage_24h": -0.03496,
+      "current_price": 0.999487,
+      "price_change_percentage_24h": -0.03905,
       "market_cap_rank": 12,
       "ath": 1.15,
-      "ath_change_percentage": -13.24661,
+      "ath_change_percentage": -13.24645,
       "genesis_date": null
     },
     {
@@ -152,11 +153,11 @@
       "symbol": "zec",
       "name": "Zcash",
       "image": "https://coin-images.coingecko.com/coins/images/486/large/circle-zcash-color.png?1696501740",
-      "current_price": 615.62,
-      "price_change_percentage_24h": 11.78481,
+      "current_price": 586.54,
+      "price_change_percentage_24h": 4.79891,
       "market_cap_rank": 13,
       "ath": 3191.93,
-      "ath_change_percentage": -80.71328,
+      "ath_change_percentage": -81.62438,
       "genesis_date": null
     },
     {
@@ -164,11 +165,11 @@
       "symbol": "leo",
       "name": "LEO Token",
       "image": "https://coin-images.coingecko.com/coins/images/8418/large/leo-token.png?1696508607",
-      "current_price": 10.03,
-      "price_change_percentage_24h": 0.6989,
+      "current_price": 10.04,
+      "price_change_percentage_24h": 0.31183,
       "market_cap_rank": 14,
       "ath": 10.57,
-      "ath_change_percentage": -5.09568,
+      "ath_change_percentage": -4.37754,
       "genesis_date": null
     },
     {
@@ -176,11 +177,11 @@
       "symbol": "rain",
       "name": "Rain",
       "image": "https://coin-images.coingecko.com/coins/images/69134/large/Rain_logo_1_.png?1762952191",
-      "current_price": 0.01403734,
-      "price_change_percentage_24h": 2.64432,
+      "current_price": 0.01401679,
+      "price_change_percentage_24h": 2.87064,
       "market_cap_rank": 15,
       "ath": 0.01478538,
-      "ath_change_percentage": -4.94775,
+      "ath_change_percentage": -4.93987,
       "genesis_date": null
     },
     {
@@ -188,23 +189,11 @@
       "symbol": "ada",
       "name": "Cardano",
       "image": "https://coin-images.coingecko.com/coins/images/975/large/cardano.png?1696502090",
-      "current_price": 0.218483,
-      "price_change_percentage_24h": -5.46545,
+      "current_price": 0.214145,
+      "price_change_percentage_24h": -7.09463,
       "market_cap_rank": 16,
       "ath": 3.09,
-      "ath_change_percentage": -92.92228,
-      "genesis_date": null
-    },
-    {
-      "id": "stellar",
-      "symbol": "xlm",
-      "name": "Stellar",
-      "image": "https://coin-images.coingecko.com/coins/images/100/large/fmpFRHHQ_400x400.jpg?1735231350",
-      "current_price": 0.22221,
-      "price_change_percentage_24h": -13.50666,
-      "market_cap_rank": 17,
-      "ath": 0.875563,
-      "ath_change_percentage": -74.5467,
+      "ath_change_percentage": -93.06282,
       "genesis_date": null
     },
     {
@@ -212,11 +201,23 @@
       "symbol": "lab",
       "name": "LAB",
       "image": "https://coin-images.coingecko.com/coins/images/70014/large/lab.png?1760352822",
-      "current_price": 21.68,
-      "price_change_percentage_24h": 34.46282,
+      "current_price": 24.64,
+      "price_change_percentage_24h": 66.78454,
+      "market_cap_rank": 17,
+      "ath": 24.47,
+      "ath_change_percentage": -1.43665,
+      "genesis_date": null
+    },
+    {
+      "id": "stellar",
+      "symbol": "xlm",
+      "name": "Stellar",
+      "image": "https://coin-images.coingecko.com/coins/images/100/large/fmpFRHHQ_400x400.jpg?1735231350",
+      "current_price": 0.220116,
+      "price_change_percentage_24h": -11.02903,
       "market_cap_rank": 18,
-      "ath": 21.61,
-      "ath_change_percentage": 0.33809,
+      "ath": 0.875563,
+      "ath_change_percentage": -74.63605,
       "genesis_date": null
     },
     {
@@ -224,11 +225,11 @@
       "symbol": "xmr",
       "name": "Monero",
       "image": "https://coin-images.coingecko.com/coins/images/69/large/monero_logo.png?1696501460",
-      "current_price": 335.5,
-      "price_change_percentage_24h": -7.30338,
+      "current_price": 328.33,
+      "price_change_percentage_24h": -5.94735,
       "market_cap_rank": 19,
       "ath": 797.73,
-      "ath_change_percentage": -57.9434,
+      "ath_change_percentage": -58.84188,
       "genesis_date": null
     },
     {
@@ -236,11 +237,11 @@
       "symbol": "link",
       "name": "Chainlink",
       "image": "https://coin-images.coingecko.com/coins/images/877/large/Chainlink_Logo_500.png?1760023405",
-      "current_price": 8.63,
-      "price_change_percentage_24h": -4.79468,
+      "current_price": 8.46,
+      "price_change_percentage_24h": -6.54278,
       "market_cap_rank": 20,
       "ath": 52.7,
-      "ath_change_percentage": -83.63003,
+      "ath_change_percentage": -83.94394,
       "genesis_date": null
     },
     {
@@ -248,11 +249,11 @@
       "symbol": "cc",
       "name": "Canton",
       "image": "https://coin-images.coingecko.com/coins/images/70468/large/Canton-Ticker_%281%29.png?1762826299",
-      "current_price": 0.151932,
-      "price_change_percentage_24h": -2.67761,
+      "current_price": 0.15025,
+      "price_change_percentage_24h": -2.56296,
       "market_cap_rank": 21,
       "ath": 0.194152,
-      "ath_change_percentage": -21.78653,
+      "ath_change_percentage": -22.32921,
       "genesis_date": null
     },
     {
@@ -260,11 +261,11 @@
       "symbol": "wbt",
       "name": "WhiteBIT Coin",
       "image": "https://coin-images.coingecko.com/coins/images/27045/large/wbt_token.png?1696526096",
-      "current_price": 49.49,
-      "price_change_percentage_24h": -5.9377,
+      "current_price": 49.09,
+      "price_change_percentage_24h": -6.70265,
       "market_cap_rank": 22,
       "ath": 64.11,
-      "ath_change_percentage": -22.57016,
+      "ath_change_percentage": -23.29084,
       "genesis_date": null
     },
     {
@@ -272,11 +273,11 @@
       "symbol": "bch",
       "name": "Bitcoin Cash",
       "image": "https://coin-images.coingecko.com/coins/images/780/large/bitcoin-cash-circle.png?1696501932",
-      "current_price": 284.66,
-      "price_change_percentage_24h": -2.2135,
+      "current_price": 279.26,
+      "price_change_percentage_24h": -4.51481,
       "market_cap_rank": 23,
       "ath": 3785.82,
-      "ath_change_percentage": -92.48101,
+      "ath_change_percentage": -92.62349,
       "genesis_date": null
     },
     {
@@ -284,11 +285,11 @@
       "symbol": "ton",
       "name": "Toncoin",
       "image": "https://coin-images.coingecko.com/coins/images/17980/large/photo_2024-09-10_17.09.00.jpeg?1725963446",
-      "current_price": 1.99,
-      "price_change_percentage_24h": -8.93693,
+      "current_price": 1.95,
+      "price_change_percentage_24h": -10.45714,
       "market_cap_rank": 24,
       "ath": 8.25,
-      "ath_change_percentage": -76.03382,
+      "ath_change_percentage": -76.25091,
       "genesis_date": null
     },
     {
@@ -296,11 +297,11 @@
       "symbol": "usd1",
       "name": "USD1",
       "image": "https://coin-images.coingecko.com/coins/images/54977/large/USD1_1000x1000_transparent.png?1749297002",
-      "current_price": 0.997946,
-      "price_change_percentage_24h": -0.05199,
+      "current_price": 0.997824,
+      "price_change_percentage_24h": -0.03632,
       "market_cap_rank": 25,
       "ath": 1.025,
-      "ath_change_percentage": -2.60893,
+      "ath_change_percentage": -2.54646,
       "genesis_date": null
     },
     {
@@ -308,11 +309,11 @@
       "symbol": "usde",
       "name": "Ethena USDe",
       "image": "https://coin-images.coingecko.com/coins/images/33613/large/usde.png?1733810059",
-      "current_price": 0.998712,
-      "price_change_percentage_24h": 0.00863,
+      "current_price": 0.998657,
+      "price_change_percentage_24h": -0.01184,
       "market_cap_rank": 26,
       "ath": 1.034,
-      "ath_change_percentage": -3.42168,
+      "ath_change_percentage": -3.4157,
       "genesis_date": null
     },
     {
@@ -320,11 +321,11 @@
       "symbol": "dai",
       "name": "Dai",
       "image": "https://coin-images.coingecko.com/coins/images/9956/large/Badge_Dai.png?1696509996",
-      "current_price": 0.999803,
-      "price_change_percentage_24h": 0.01716,
+      "current_price": 0.999683,
+      "price_change_percentage_24h": 0.00284,
       "market_cap_rank": 27,
       "ath": 1.22,
-      "ath_change_percentage": -18.00296,
+      "ath_change_percentage": -17.98747,
       "genesis_date": null
     },
     {
@@ -332,11 +333,11 @@
       "symbol": "m",
       "name": "MemeCore",
       "image": "https://coin-images.coingecko.com/coins/images/53247/large/square-bg-transparent.png?1752637478",
-      "current_price": 3.33,
-      "price_change_percentage_24h": 4.35438,
+      "current_price": 3.31,
+      "price_change_percentage_24h": 2.84441,
       "market_cap_rank": 28,
       "ath": 4.82,
-      "ath_change_percentage": -30.9138,
+      "ath_change_percentage": -31.75504,
       "genesis_date": null
     },
     {
@@ -344,11 +345,11 @@
       "symbol": "hbar",
       "name": "Hedera",
       "image": "https://coin-images.coingecko.com/coins/images/3688/large/hbar.png?1696504364",
-      "current_price": 0.088634,
-      "price_change_percentage_24h": -5.07054,
+      "current_price": 0.087009,
+      "price_change_percentage_24h": -6.56929,
       "market_cap_rank": 29,
       "ath": 0.569229,
-      "ath_change_percentage": -84.36974,
+      "ath_change_percentage": -84.63857,
       "genesis_date": null
     },
     {
@@ -356,11 +357,11 @@
       "symbol": "ltc",
       "name": "Litecoin",
       "image": "https://coin-images.coingecko.com/coins/images/2/large/litecoin.png?1696501400",
-      "current_price": 48.32,
-      "price_change_percentage_24h": -5.0753,
+      "current_price": 47.96,
+      "price_change_percentage_24h": -5.53517,
       "market_cap_rank": 30,
       "ath": 410.26,
-      "ath_change_percentage": -88.21594,
+      "ath_change_percentage": -88.26123,
       "genesis_date": null
     },
     {
@@ -368,11 +369,11 @@
       "symbol": "avax",
       "name": "Avalanche",
       "image": "https://coin-images.coingecko.com/coins/images/12559/large/Avalanche_Circle_RedWhite_Trans.png?1696512369",
-      "current_price": 8.45,
-      "price_change_percentage_24h": -5.28999,
+      "current_price": 8.27,
+      "price_change_percentage_24h": -7.33502,
       "market_cap_rank": 31,
       "ath": 144.96,
-      "ath_change_percentage": -94.16256,
+      "ath_change_percentage": -94.26373,
       "genesis_date": null
     },
     {
@@ -380,11 +381,11 @@
       "symbol": "near",
       "name": "NEAR Protocol",
       "image": "https://coin-images.coingecko.com/coins/images/10365/large/near.jpg?1696510367",
-      "current_price": 2.64,
-      "price_change_percentage_24h": 3.96786,
+      "current_price": 2.59,
+      "price_change_percentage_24h": -0.57667,
       "market_cap_rank": 32,
       "ath": 20.44,
-      "ath_change_percentage": -87.1884,
+      "ath_change_percentage": -87.26799,
       "genesis_date": null
     },
     {
@@ -392,11 +393,11 @@
       "symbol": "sui",
       "name": "Sui",
       "image": "https://coin-images.coingecko.com/coins/images/26375/large/sui-ocean-square.png?1727791290",
-      "current_price": 0.834014,
-      "price_change_percentage_24h": -5.29514,
+      "current_price": 0.817833,
+      "price_change_percentage_24h": -6.86894,
       "market_cap_rank": 33,
       "ath": 5.35,
-      "ath_change_percentage": -84.40094,
+      "ath_change_percentage": -84.70359,
       "genesis_date": null
     },
     {
@@ -404,11 +405,11 @@
       "symbol": "shib",
       "name": "Shiba Inu",
       "image": "https://coin-images.coingecko.com/coins/images/11939/large/shiba.png?1696511800",
-      "current_price": 5.3e-06,
-      "price_change_percentage_24h": -4.4357,
+      "current_price": 5.21e-06,
+      "price_change_percentage_24h": -5.67801,
       "market_cap_rank": 34,
       "ath": 8.616e-05,
-      "ath_change_percentage": -93.84451,
+      "ath_change_percentage": -93.95344,
       "genesis_date": null
     },
     {
@@ -416,11 +417,11 @@
       "symbol": "pyusd",
       "name": "PayPal USD",
       "image": "https://coin-images.coingecko.com/coins/images/31212/large/PYUSD_Token_Logo_2x.png?1765987788",
-      "current_price": 0.999892,
-      "price_change_percentage_24h": 0.00107,
+      "current_price": 0.999354,
+      "price_change_percentage_24h": -0.06843,
       "market_cap_rank": 35,
       "ath": 1.081,
-      "ath_change_percentage": -7.46215,
+      "ath_change_percentage": -7.50687,
       "genesis_date": null
     },
     {
@@ -429,10 +430,10 @@
       "name": "Circle USYC",
       "image": "https://coin-images.coingecko.com/coins/images/51054/large/Hashnote_SDYC_200x200.png?1730370965",
       "current_price": 1.13,
-      "price_change_percentage_24h": -0.06158,
+      "price_change_percentage_24h": -0.08055,
       "market_cap_rank": 36,
       "ath": 1.13,
-      "ath_change_percentage": -0.09579,
+      "ath_change_percentage": -0.09619,
       "genesis_date": null
     },
     {
@@ -440,11 +441,11 @@
       "symbol": "cro",
       "name": "Cronos",
       "image": "https://coin-images.coingecko.com/coins/images/7310/large/cro_token_logo.png?1696507599",
-      "current_price": 0.063355,
-      "price_change_percentage_24h": -4.04695,
+      "current_price": 0.062629,
+      "price_change_percentage_24h": -4.74158,
       "market_cap_rank": 37,
       "ath": 0.891544,
-      "ath_change_percentage": -92.88637,
+      "ath_change_percentage": -92.96689,
       "genesis_date": null
     },
     {
@@ -452,11 +453,11 @@
       "symbol": "xaut",
       "name": "Tether Gold",
       "image": "https://coin-images.coingecko.com/coins/images/10481/large/logo.png?1774627372",
-      "current_price": 4459.61,
-      "price_change_percentage_24h": -0.27825,
+      "current_price": 4463.05,
+      "price_change_percentage_24h": -0.02891,
       "market_cap_rank": 38,
       "ath": 5504.62,
-      "ath_change_percentage": -18.96941,
+      "ath_change_percentage": -18.9162,
       "genesis_date": null
     },
     {
@@ -464,11 +465,11 @@
       "symbol": "usdg",
       "name": "Global Dollar",
       "image": "https://coin-images.coingecko.com/coins/images/51281/large/GDN_USDG_Token_200x200.png?1730484111",
-      "current_price": 0.999904,
-      "price_change_percentage_24h": 0.01411,
+      "current_price": 0.999657,
+      "price_change_percentage_24h": -0.02339,
       "market_cap_rank": 39,
       "ath": 1.65,
-      "ath_change_percentage": -39.57226,
+      "ath_change_percentage": -39.56766,
       "genesis_date": null
     },
     {
@@ -488,11 +489,11 @@
       "symbol": "tao",
       "name": "Bittensor",
       "image": "https://coin-images.coingecko.com/coins/images/28452/large/ARUsPeNQ_400x400.jpeg?1696527447",
-      "current_price": 243.18,
-      "price_change_percentage_24h": -4.15251,
+      "current_price": 234.16,
+      "price_change_percentage_24h": -8.20334,
       "market_cap_rank": 41,
       "ath": 757.6,
-      "ath_change_percentage": -67.8734,
+      "ath_change_percentage": -68.92418,
       "genesis_date": null
     },
     {
@@ -500,11 +501,11 @@
       "symbol": "usdy",
       "name": "Ondo US Dollar Yield",
       "image": "https://coin-images.coingecko.com/coins/images/31700/large/usdy_%281%29.png?1696530524",
-      "current_price": 1.14,
-      "price_change_percentage_24h": 1.12397,
+      "current_price": 1.13,
+      "price_change_percentage_24h": 0.54514,
       "market_cap_rank": 42,
       "ath": 1.26,
-      "ath_change_percentage": -10.03983,
+      "ath_change_percentage": -10.22305,
       "genesis_date": null
     },
     {
@@ -512,11 +513,11 @@
       "symbol": "paxg",
       "name": "PAX Gold",
       "image": "https://coin-images.coingecko.com/coins/images/9519/large/paxgold.png?1696509604",
-      "current_price": 4477.73,
-      "price_change_percentage_24h": -0.16548,
+      "current_price": 4480.48,
+      "price_change_percentage_24h": 0.06964,
       "market_cap_rank": 43,
       "ath": 5619.09,
-      "ath_change_percentage": -20.31722,
+      "ath_change_percentage": -20.24592,
       "genesis_date": null
     },
     {
@@ -524,11 +525,11 @@
       "symbol": "mnt",
       "name": "Mantle",
       "image": "https://coin-images.coingecko.com/coins/images/30980/large/MNT_Token_Logo.png?1765516974",
-      "current_price": 0.621298,
-      "price_change_percentage_24h": -1.82615,
+      "current_price": 0.613433,
+      "price_change_percentage_24h": -3.78787,
       "market_cap_rank": 44,
       "ath": 2.86,
-      "ath_change_percentage": -78.23391,
+      "ath_change_percentage": -78.45827,
       "genesis_date": null
     },
     {
@@ -536,11 +537,11 @@
       "symbol": "wlfi",
       "name": "World Liberty Financial",
       "image": "https://coin-images.coingecko.com/coins/images/50767/large/wlfi.png?1756438915",
-      "current_price": 0.059956,
-      "price_change_percentage_24h": -0.64061,
+      "current_price": 0.05968,
+      "price_change_percentage_24h": 0.12452,
       "market_cap_rank": 45,
       "ath": 0.331336,
-      "ath_change_percentage": -81.90469,
+      "ath_change_percentage": -81.98811,
       "genesis_date": null
     },
     {
@@ -548,11 +549,11 @@
       "symbol": "ondo",
       "name": "Ondo",
       "image": "https://coin-images.coingecko.com/coins/images/26580/large/ONDO.png?1696525656",
-      "current_price": 0.386428,
-      "price_change_percentage_24h": 8.08166,
-      "market_cap_rank": 47,
+      "current_price": 0.380168,
+      "price_change_percentage_24h": 6.6507,
+      "market_cap_rank": 46,
       "ath": 2.14,
-      "ath_change_percentage": -81.94395,
+      "ath_change_percentage": -82.23643,
       "genesis_date": null
     },
     {
@@ -560,11 +561,11 @@
       "symbol": "dot",
       "name": "Polkadot",
       "image": "https://coin-images.coingecko.com/coins/images/12171/large/polkadot.jpg?1766533446",
-      "current_price": 1.12,
-      "price_change_percentage_24h": -3.5658,
-      "market_cap_rank": 46,
+      "current_price": 1.091,
+      "price_change_percentage_24h": -6.26369,
+      "market_cap_rank": 47,
       "ath": 54.98,
-      "ath_change_percentage": -97.96513,
+      "ath_change_percentage": -98.00674,
       "genesis_date": null
     },
     {
@@ -572,11 +573,11 @@
       "symbol": "rlusd",
       "name": "Ripple USD",
       "image": "https://coin-images.coingecko.com/coins/images/39651/large/RLUSD_200x200_%281%29.png?1727376633",
-      "current_price": 0.999959,
-      "price_change_percentage_24h": 0.00318,
+      "current_price": 0.999779,
+      "price_change_percentage_24h": -0.0091,
       "market_cap_rank": 48,
       "ath": 1.073,
-      "ath_change_percentage": -6.79646,
+      "ath_change_percentage": -6.80275,
       "genesis_date": null
     },
     {
@@ -584,11 +585,11 @@
       "symbol": "okb",
       "name": "OKB",
       "image": "https://coin-images.coingecko.com/coins/images/4463/large/WeChat_Image_20220118095654.png?1696505053",
-      "current_price": 85.64,
-      "price_change_percentage_24h": -4.19722,
+      "current_price": 84.26,
+      "price_change_percentage_24h": -5.90057,
       "market_cap_rank": 49,
       "ath": 228.74,
-      "ath_change_percentage": -62.4938,
+      "ath_change_percentage": -63.06702,
       "genesis_date": null
     },
     {
@@ -596,154 +597,154 @@
       "symbol": "uni",
       "name": "Uniswap",
       "image": "https://coin-images.coingecko.com/coins/images/12504/large/uniswap-logo.png?1720676669",
-      "current_price": 2.85,
-      "price_change_percentage_24h": -4.74614,
+      "current_price": 2.81,
+      "price_change_percentage_24h": -5.8729,
       "market_cap_rank": 50,
       "ath": 44.92,
-      "ath_change_percentage": -93.64173,
+      "ath_change_percentage": -93.70865,
       "genesis_date": null
     }
   ],
   "news": [
     {
-      "title": "Strategy sells bitcoin for the first time since December 2022",
-      "description": "Strategy's Bitcoin sale signals a shift from its \"never sell\" stance, potentially impacting investor confidence and future stock performance.\nThe post Strategy sells bitcoin for the first time since December 2022 appeared first on Crypto Briefing.",
-      "url": "https://cryptobriefing.com/strategy-sells-bitcoin-first-time-since-2022/",
-      "source": "Crypto Briefing",
-      "published_at": "2026-06-01T17:55:37Z"
-    },
-    {
-      "title": "CFTC upgrades filing portal to let exchanges certify multiple contracts at once",
-      "description": "The CFTC's portal upgrade streamlines contract filings, potentially accelerating product launches, but upcoming disclosure rules may offset this ease.\nThe post CFTC upgrades filing portal to let exchanges certify multiple contracts at once appeared first on C\u2026",
-      "url": "https://cryptobriefing.com/cftc-upgrades-electronic-filing-self-certification/",
-      "source": "Crypto Briefing",
-      "published_at": "2026-06-01T17:53:34Z"
-    },
-    {
-      "title": "Bitcoin drops to 7-week low under $71K as US-Iran ceasefire hopes fade",
-      "description": "Bitcoin fell to its lowest levels since mid-April as chances of a US-Iran peace deal seemed to fade and oil prices spiked.",
-      "url": "https://cointelegraph.com/markets/bitcoin-drops-to-seven-week-low-under-71k-as-us-iran-ceasefire-hopes-fade",
-      "source": "Cointelegraph",
-      "published_at": "2026-06-01T17:48:55Z"
-    },
-    {
-      "title": "Supreme Court Wants White House Input On Robinhood IPO Suit",
-      "description": "The Supreme Court reportedly wants White House feedback on a case involving Robinhood\u2019s 2021 IPO. As Reuters reported Monday (June 1), the court is deciding whether to hear Robinhood\u2019s request to quash a lawsuit that accuses the company of misleading investor\u2026",
-      "url": "https://www.pymnts.com/legal/2026/supreme-court-wants-white-house-input-on-robinhood-ipo-suit/",
-      "source": "pymnts.com",
-      "published_at": "2026-06-01T17:42:08Z"
-    },
-    {
-      "title": "BECOMING THE UBER-PHOTOGRAPHER (AI E-BOOK FREE PDF)",
-      "description": "Here is the book text in Markdown: BECOMING THE UBER-PHOTOGRAPHER A Street-Philosophy Manual for Seeing Harder, Lifting Heavier, Walking Farther, and Creating Forever ERIC KIM First Edition Draft This is not a book about \u2026",
-      "url": "https://erickimphotography.com/blog/2026/06/01/becoming-the-uber-photographer-4/",
-      "source": "Erickimphotography.com",
-      "published_at": "2026-06-01T17:35:19Z"
-    },
-    {
-      "title": "Jim Cramer on Strategy Inc: \u201cI Can Only Recommend Bitcoin\u201d",
-      "description": "",
-      "url": "https://consent.yahoo.com/v2/collectConsent?sessionId=1_cc-session_fd07e3dd-d6cf-488d-b099-75dc6be4ce0d",
-      "source": "Yahoo Entertainment",
-      "published_at": "2026-06-01T17:32:40Z"
-    },
-    {
-      "title": "Bitcoin Outlook Hinges On A Handful Of Critical Price Zones",
-      "description": "Bitcoin is approaching a pivotal moment, with several key support and resistance levels set to determine its next major move. While bulls are fighting to maintain critical price zones and preserve the broader recovery structure, bears continue to pressure the\u2026",
-      "url": "http://www.newsbtc.com/news/bitcoin/bitcoin-critical-price-zones/",
+      "title": "Bitcoin Is Still Following This Descending Channel Pattern And The Endgame Shows The Bottom",
+      "description": "Bitcoin\u2019s recovery attempts are still being judged against a larger structure that has controlled price action for months. An interesting technical analysis of the daily candlestick timeframe chart shows that Bitcoin is still following a descending channel, w\u2026",
+      "url": "http://www.newsbtc.com/news/bitcoin/bitcoin-channel-pattern/",
       "source": "newsBTC",
-      "published_at": "2026-06-01T17:30:54Z"
+      "published_at": "2026-06-01T20:30:33Z"
     },
     {
-      "title": "Show HN: Poolnarc \u2013 catch hidden Linux cryptominers from two eBPF hooks",
-      "description": "Behavioral hidden-cryptominer detector for Linux in eBPF \u2014 flags processes talking to mining-pool ports while spoofing kernel-thread names. No signatures, no agent, no cloud. CO-RE portable. - yeet...",
-      "url": "https://github.com/yeet-src/poolnarc",
-      "source": "Github.com",
-      "published_at": "2026-06-01T17:26:10Z"
+      "title": "Is Michael Saylor\u2019s Strategy changing its Bitcoin playbook? MSTR sells $2.5 million of BTC for the first time since 2022 - here's why",
+      "description": "Michael Saylor\u200b's Strategy Bitcoin (BTC USD) sale: Strategy has sold 32 bitcoin for approximately 2.5 million dollars. This is the company's first bitcoin sale since late 2022. The proceeds will help fund distributions on its preferred stock. Strategy continu\u2026",
+      "url": "https://economictimes.indiatimes.com/news/international/us/is-michael-saylors-strategy-changing-its-bitcoin-playbook-mstr-sells-2-5-million-of-btc-for-the-first-time-since-2022-heres-why/articleshow/131449744.cms",
+      "source": "The Times of India",
+      "published_at": "2026-06-01T20:15:42Z"
     },
     {
-      "title": "Saylor's Strategy sold bitcoin for the first time since 2022. These firms are still buying",
-      "description": "With Strategy breaking its accumulation streak and many peers stepping aside, the list of active digital asset treasuries has narrowed considerably.",
-      "url": "https://www.coindesk.com/business/2026/06/01/saylor-s-strategy-sold-bitcoin-for-the-first-time-since-2022-these-firms-are-still-buying",
-      "source": "CoinDesk",
-      "published_at": "2026-06-01T17:25:55Z"
+      "title": "Crypto Ponzi Scheme Convictions: Key Red Flags Investors Must Know",
+      "description": "Ponzi schemes continue to thrive\u2014even in crypto. Learn key lessons and warning signs from recent convictions to protect your investments.",
+      "url": "https://www.forbes.com/sites/steveweisman/2026/06/01/crypto-ponzi-scheme-convictions-key-red-flags-investors-must-know/",
+      "source": "Forbes",
+      "published_at": "2026-06-01T20:05:00Z"
     },
     {
-      "title": "brk-client 0.3.1",
-      "description": "Bitcoin on-chain analytics client \u2014 thousands of metrics, block explorer, and address index",
-      "url": "https://pypi.org/project/brk-client/0.3.1/",
-      "source": "Pypi.org",
-      "published_at": "2026-06-01T17:25:13Z"
-    },
-    {
-      "title": "Vitalik Buterin proposes options-based DeFi model to reduce liquidations",
-      "description": "Buterin's proposal could stabilize DeFi by reducing volatility risks, potentially fostering a more resilient and sustainable ecosystem.\nThe post Vitalik Buterin proposes options-based DeFi model to reduce liquidations appeared first on Crypto Briefing.",
-      "url": "https://cryptobriefing.com/buterin-options-defi-reduce-liquidations/",
-      "source": "Crypto Briefing",
-      "published_at": "2026-06-01T17:24:37Z"
-    },
-    {
-      "title": "Forget Bitcoin! 1 Historically Cheap Stock to Buy Right Now Instead of the World\u2019s Largest Cryptocurrency",
-      "description": "",
-      "url": "https://consent.yahoo.com/v2/collectConsent?sessionId=1_cc-session_0e2fa647-7cb7-4b5f-8760-792aa8fd4bb1",
-      "source": "Yahoo Entertainment",
-      "published_at": "2026-06-01T17:10:03Z"
-    },
-    {
-      "title": "Citadel Securities seeks to reshape $4B of existing debt after record trading quarter",
-      "description": "Citadel's debt restructuring highlights lender confidence but poses risks if market volatility decreases, impacting revenue and debt costs.\nThe post Citadel Securities seeks to reshape $4B of existing debt after record trading quarter appeared first on Crypto\u2026",
-      "url": "https://cryptobriefing.com/citadel-securities-reshape-4b-debt/",
-      "source": "Crypto Briefing",
-      "published_at": "2026-06-01T17:08:43Z"
-    },
-    {
-      "title": "It's not 2022 anymore: What Strategy's first bitcoin sale can (and can't) tell us about this one",
-      "description": "Michael Saylor's Strategy has evolved into a far more complex bitcoin-finance machine since it last sold BTC three and half years ago.",
-      "url": "https://www.coindesk.com/markets/2026/06/01/strategy-s-second-bitcoin-sale-revives-memories-of-2022",
-      "source": "CoinDesk",
-      "published_at": "2026-06-01T17:06:34Z"
-    },
-    {
-      "title": "Pakistan\u2019s Diplomatic Pivot Makes It a Trump-Era Power Player",
-      "description": "Islamabad is happy to give the U.S. president the image he craves.",
-      "url": "http://foreignpolicy.com/2026/06/01/trump-pakistan-iran-peace-munir-crypto-power/",
-      "source": "Foreign Policy",
-      "published_at": "2026-06-01T17:04:21Z"
-    },
-    {
-      "title": "Ethereum's Vitalik Buterin is rethinking how DeFi handles market crashes",
-      "description": "In a research post published Monday, Buterin proposed creating index-tracking assets using options contracts rather than the debt-based structures that underpin much of DeFi today.",
-      "url": "https://www.coindesk.com/tech/2026/06/01/ethereum-s-vitalik-buterin-is-rethinking-how-defi-handles-market-crashes",
-      "source": "CoinDesk",
-      "published_at": "2026-06-01T17:01:41Z"
-    },
-    {
-      "title": "OKX Lists TRXUSD Expiry Perps (X-Perp), Offering MiFID-Compliant Derivative Access to TRX",
-      "description": "GENEVA, June 01, 2026 (GLOBE NEWSWIRE) -- TRON DAO, the community-governed DAO dedicated to accelerating the decentralization of the internet through blockchain technology and decentralized applications (dApps), today announced the listing of TRXUSD Expiry Pe\u2026",
-      "url": "https://www.globenewswire.com/news-release/2026/06/01/3304614/0/en/OKX-Lists-TRXUSD-Expiry-Perps-X-Perp-Offering-MiFID-Compliant-Derivative-Access-to-TRX.html",
+      "title": "How to Trade Memecoins with AI: A Beginner\u2019s Guide Using MemeToro Technology",
+      "description": "Learn how MemeToro uses AI agents, memecoin analytics, DeFi trading, and prediction markets to help beginners discover the best crypto presale opportunities early Learn how MemeToro uses AI agents, memecoin analytics, DeFi trading, and prediction markets to h\u2026",
+      "url": "https://www.globenewswire.com/news-release/2026/06/01/3304693/0/en/How-to-Trade-Memecoins-with-AI-A-Beginner-s-Guide-Using-MemeToro-Technology.html",
       "source": "GlobeNewswire",
-      "published_at": "2026-06-01T17:00:00Z"
+      "published_at": "2026-06-01T20:00:00Z"
     },
     {
-      "title": "Ethereum Supply Becomes More Concentrated In Large Wallets, Here Are The Numbers",
-      "description": "The concentration of Ethereum (ETH) among large wallet holders is increasing as whales and institutional players continue to buy the second-largest cryptocurrency at an aggressive pace. Fresh on-chain data has also revealed a striking shift in the asset\u2019s sup\u2026",
-      "url": "https://bitcoinist.com/ethereum-supply-concentrated/",
+      "title": "Strategy's Bitcoin Sale Timing Throws $50 Million Polymarket Bet Into Dispute",
+      "description": "Polymarket users are waiting for a resolution on whether Strategy's Bitcoin sale took place before the end of May\u2014with over $50 million bet so far.",
+      "url": "https://decrypt.co/369664/strategy-bitcoin-sale-throws-50-million-polymarket-bet-dispute",
+      "source": "Decrypt",
+      "published_at": "2026-06-01T19:58:54Z"
+    },
+    {
+      "title": "ape-solidity 0.8.6",
+      "description": "Plugin for Ape Ethereum Framework for compiling Solidity contracts",
+      "url": "https://pypi.org/project/ape-solidity/0.8.6/",
+      "source": "Pypi.org",
+      "published_at": "2026-06-01T19:57:56Z"
+    },
+    {
+      "title": "Toncoin price soars as Telegram eyes TON\u2019s rebrand to GRAM",
+      "description": "Toncoin price jumped as Bitcoin revisited support below $72,000. Bulls took advantage of Telegram-related news of a rebrand to GRAM token to push TON above $2.27. If buyers dominate, Toncoin could edge past $3.00 next. Toncoin rose by nearly 20% and touched h\u2026",
+      "url": "https://coinjournal.net/news/toncoin-price-soars-as-telegram-eyes-tons-rebrand-to-gram/",
+      "source": "Coinjournal.net",
+      "published_at": "2026-06-01T19:57:40Z"
+    },
+    {
+      "title": "Anthropic files for public stock sale, eyes trillion-dollar debut",
+      "description": "Anthropic's potential trillion-dollar IPO highlights the escalating valuation race in AI, raising stakes for profitability and market competition.\nThe post Anthropic files for public stock sale, eyes trillion-dollar debut appeared first on Crypto Briefing.",
+      "url": "https://cryptobriefing.com/anthropic-ipo-trillion-dollar-debut/",
+      "source": "Crypto Briefing",
+      "published_at": "2026-06-01T19:54:06Z"
+    },
+    {
+      "title": "Avichal Garg: Investing in crypto and fintech offers better long-term returns, the importance of formal verification in DeFi, and how tokens enable participatory capitalism | Empire",
+      "description": "Investing in overlooked sectors like crypto could yield better long-term returns than the current AI frenzy.\nThe post Avichal Garg: Investing in crypto and fintech offers better long-term returns, the importance of formal verification in DeFi, and how tokens \u2026",
+      "url": "https://cryptobriefing.com/avichal-garg-investing-in-crypto-and-fintech-offers-better-long-term-returns-the-importance-of-formal-verification-in-defi-and-how-tokens-enable-participatory-capitalism-empire/",
+      "source": "Crypto Briefing",
+      "published_at": "2026-06-01T19:39:45Z"
+    },
+    {
+      "title": "CME Group Announces Launch of 24/7 Cryptocurrency Futures and Options Trading",
+      "description": "CHICAGO, June 1, 2026 /PRNewswire/ -- CME Group, the world's leading derivatives marketplace, today announced it launched 24/7 trading for Cryptocurrency futures and options. The expanded trading hours, which went live on Friday, May 29, mark a significant mi\u2026",
+      "url": "https://www.prnewswire.com/news-releases/cme-group-announces-launch-of-247-cryptocurrency-futures-and-options-trading-302787513.html",
+      "source": "PRNewswire",
+      "published_at": "2026-06-01T19:38:00Z"
+    },
+    {
+      "title": "Price of Bitcoin Drops as Michael Saylor\u2019s Strategy Sells Off Some of Its Stash",
+      "description": "For years, Saylor's company has had one strategy: buy bitcoin and don't sell it.",
+      "url": "https://gizmodo.com/price-of-bitcoin-drops-as-michael-saylors-strategy-sells-off-some-of-its-stash-2000765973",
+      "source": "Gizmodo.com",
+      "published_at": "2026-06-01T19:35:12Z"
+    },
+    {
+      "title": "Rosen Law Firm Encourages FLOW Cryptocurrency Investors to Inquire About Securities Class Action Investigation",
+      "description": "NEW YORK, June 1, 2026 /PRNewswire/ -- Why: Rosen Law Firm, a global investor rights law firm, continues to investigate potential securities claims on behalf of investors in FLOW (FLOW-USD) cryptocurrency, resulting from allegations that Flow Foundation may h\u2026",
+      "url": "https://www.prnewswire.com/news-releases/rosen-law-firm-encourages-flow-cryptocurrency-investors-to-inquire-about-securities-class-action-investigation-302786511.html",
+      "source": "PRNewswire",
+      "published_at": "2026-06-01T19:34:00Z"
+    },
+    {
+      "title": "Kalshi Eyes Perpetual Futures for XRP, Solana, Dogecoin\u2014And These Altcoins",
+      "description": "Kalshi moved swiftly to lock down an emerging market for perpetual futures in the U.S., filing to certify a slate of altcoin offerings",
+      "url": "https://decrypt.co/369665/kalshi-eyes-perpetual-futures-xrp-solana-dogecoin-altcoins",
+      "source": "Decrypt",
+      "published_at": "2026-06-01T19:33:53Z"
+    },
+    {
+      "title": "Pundit Says XRP Has A 53% Chance Of Reaching The $11 Price Mark \u2013 Here\u2019s Why",
+      "description": "XRP may be heavily bearish right now, as its price steadily falls toward the $1.30 mark due to the highly unfavorable market environment. However, several predictions suggest that this phase is simply temporary and the broader outlook is extremely bullish, wi\u2026",
+      "url": "https://bitcoinist.com/xrp-chance-of-reaching-11/",
       "source": "Bitcoinist",
-      "published_at": "2026-06-01T16:30:58Z"
+      "published_at": "2026-06-01T19:30:53Z"
     },
     {
-      "title": "Michael Saylor's Strategy stock plunges after rare sale",
-      "description": "Michael Saylor had one message about Bitcoin: never sell. He turned Strategy (NASDAQ: MSTR), formerly MicroStrategy, into the largest corporate holder of...",
-      "url": "https://www.thestreet.com/crypto/markets/michael-saylor-breaks-his-most-famous-promise",
-      "source": "TheStreet",
-      "published_at": "2026-06-01T16:26:40Z"
+      "title": "Strive CEO Matt Cole calls digital credit bigger than ETFs for Bitcoin\u2019s future",
+      "description": "Digital credit's rise could reshape Bitcoin investment strategies, offering income potential but posing risks amid Bitcoin's inherent volatility.\nThe post Strive CEO Matt Cole calls digital credit bigger than ETFs for Bitcoin\u2019s future appeared first on Crypto\u2026",
+      "url": "https://cryptobriefing.com/strive-ceo-digital-credit-bigger-than-etfs/",
+      "source": "Crypto Briefing",
+      "published_at": "2026-06-01T19:26:42Z"
     },
     {
-      "title": "Tom Lee's BitMine Buys $52 Million in Ethereum as Strategy Sells Bitcoin",
-      "description": "",
-      "url": "https://consent.yahoo.com/v2/collectConsent?sessionId=1_cc-session_d306f3eb-38dd-4586-8e88-2d2f04869ba0",
-      "source": "Yahoo Entertainment",
-      "published_at": "2026-06-01T16:25:25Z"
+      "title": "Strive CEO Matt Cole calls digital credit bigger than ETFs for Bitcoin",
+      "description": "Digital credit's rise could reshape Bitcoin investment strategies, offering income potential but posing risks amid Bitcoin's inherent volatility.\nThe post Strive CEO Matt Cole calls digital credit bigger than ETFs for Bitcoin appeared first on Crypto Briefing.",
+      "url": "https://cryptobriefing.com/strive-digital-credit-bigger-than-etfs/",
+      "source": "Crypto Briefing",
+      "published_at": "2026-06-01T19:19:25Z"
+    },
+    {
+      "title": "AI vs Crypto Smart Contracts: Can AI Replace Code Auditors?",
+      "description": "Out of nowhere, AI slipped into smart contract safety checks. Suddenly, reviews speed up, costs drop, flaws get spotted by machines, while systems watch live...\nThe post AI vs Crypto Smart Contracts: Can AI Replace Code Auditors? appeared first on Bitcoin Fou\u2026",
+      "url": "https://bitcoinfoundation.org/news/ai-news/ai-vs-crypto-smart-contracts-can-ai-replace-code-auditors/",
+      "source": "Bitcoinfoundation.org",
+      "published_at": "2026-06-01T19:19:03Z"
+    },
+    {
+      "title": "XRP\u2019s 15-week low puts ETF inflows to the spot-market test",
+      "description": "XRP is giving traders a contradiction that separates flow data from actual market control. The token has been trading around the low-$1.30s after hitting its weakest level in roughly 15 weeks, even as two data points bulls often treat as supportive moved in t\u2026",
+      "url": "https://cryptoslate.com/xrps-15-week-low-puts-etf-inflows-to-the-spot-market-test/",
+      "source": "CryptoSlate",
+      "published_at": "2026-06-01T19:15:41Z"
+    },
+    {
+      "title": "Four (FORM) Price Prediction 2026: Why FORM Keeps Falling and What\u2019s Behind Its Weak Market Momentum",
+      "description": "Some say Four\u2019s price in 2026 might stay shaky, given how few buyers show interest lately. Weak rallies fade fast, trust feels thin, yet the...\nThe post Four (FORM) Price Prediction 2026: Why FORM Keeps Falling and What\u2019s Behind Its Weak Market Momentum appea\u2026",
+      "url": "https://bitcoinfoundation.org/news/analysis/four-form-price-prediction-2026-why-form-keeps-falling-and-whats-behind-its-weak-market-momentum/",
+      "source": "Bitcoinfoundation.org",
+      "published_at": "2026-06-01T19:11:17Z"
+    },
+    {
+      "title": "Has Bitcoin Bottomed At $60,000 To Return To $100,000, Or Is This Just The Start Of Another Crash?",
+      "description": "Bitcoin is still trading above $60,000, but there are questions as to whether that area has already become the macro bottom for this correction or whether another crash could still drag the price back into that zone.\u00a0Technical analysis using Bitcoin\u2019s weekly \u2026",
+      "url": "http://www.newsbtc.com/news/bitcoin/has-bitcoin-bottomed-60000/",
+      "source": "newsBTC",
+      "published_at": "2026-06-01T19:00:59Z"
     }
   ],
   "pick_of_day": {
@@ -751,9 +752,9 @@
     "name": "LAB",
     "symbol": "lab",
     "image": "https://coin-images.coingecko.com/coins/images/70014/large/lab.png?1760352822",
-    "current_price": 21.68,
-    "price_change_percentage_24h": 34.46282,
-    "ath_change_percentage": 0.33809,
-    "reason": "LAB shows strong recent momentum (+34.46% in 24h) among top market-cap coins."
+    "current_price": 24.64,
+    "price_change_percentage_24h": 66.78454,
+    "ath_change_percentage": -1.43665,
+    "reason": "LAB is trading about 1.4% below its all-time high with a +66.78% move in the last 24 hours."
   }
 }
