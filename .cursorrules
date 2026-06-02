@@ -1,0 +1,40 @@
+## Rules for test files [glob: **/test_*.py]
+- Every test function must have a docstring explaining what it's testing
+- Use pytest fixtures, not setUp/tearDown
+- Mock all external API calls — tests should never make real network requests
+- Tests must be in the same folder as the file they are testing
+- Tests must be named test_*.py
+- Tests must take place before the actual code is written
+- Tests must be runnable with pytest
+- Tests must be independent of each other
+- Tests must be written in the same language as the code they are testing
+- Tests must be written in the same style as the code they are testing
+- Tests must be written in the same format as the code they are testing
+- Tests must be written in the same structure as the code they are testing
+- Tests must be written in the same syntax as the code they are testing
+- Tests must be written in the same conventions as the code they are testing
+- Tests must be written in the same best practices as the code they are testing
+- Tests must be written in the same documentation as the code they are testing
+- Tests must be written in the same comments as the code they are testing
+- Tests must be written in the same logging as the code they are testing
+- Tests must be written in the same error handling as the code they are testing
+- Tests must be written in the same debugging as the code they are testing
+
+## Rules for route handlers [glob: app.py]
+- Every route must validate its inputs before processing
+- Routes return JSON for /api/* paths, HTML for everything else
+- Never put business logic directly in a route — call a function from fetcher.py instead
+- Routes must be named route_*.py
+- Routes must be in the same folder as the file they are testing
+- Routes must be named route_*.py
+- Routes must take place before the actual code is written
+- Routes must be runnable with pytest
+- Routes must be independent of each other
+
+## Hard rules:
+- API keys in `.env` only. Hardcoded key = exercise doesn't count.
+- `fetcher.py` is separate from `app.py`. Routes do not contain API logic.
+- Use the AI terminal (Cmd+K) for all shell operations today.
+- Use `@docs` when asking about Flask or APScheduler APIs.
+- Update your architecture Notepad whenever you make a structural decision.
+- App must run cleanly with `flask run` before you commit.

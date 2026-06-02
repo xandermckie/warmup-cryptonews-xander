@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="en" data-bs-theme="dark" data-theme="dark">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Crypt0x News</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body class="theme-dark">
+
+  <header class="site-header">
+
+    <div class="container">
+
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+
+        <h1 class="site-title h4 mb-0">Crypt0x News</h1>
+
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+
+          <span class="last-updated" id="last-updated">
+
+            Last updated: {{ last_updated_display }}
+
+          </span>
+
+          {% if stale %}
+
+          <span class="badge bg-warning text-dark stale-badge" id="stale-badge">Showing cached data</span>
+
+          {% else %}
+
+          <span class="badge bg-warning text-dark stale-badge d-none" id="stale-badge">Showing cached data</span>
+
+          {% endif %}
+
+        </div>
+
+      </div>
+
+      {% if fetch_errors %}
+
+      <div class="alert alert-warning error-alert mt-2 mb-0 py-2" role="alert">
+
+        {% for err in fetch_errors %}{{ err }}{% if not loop.last %} · {% endif %}{% endfor %}
+
+      </div>
+
+      {% endif %}
+
+    </div>
+
+  </header>
+
+
+
+  <div class="ticker-wrap" id="ticker-wrap">
+
+    <div class="ticker-track" id="ticker-track"></div>
+
+  </div>
+
+
+
+  <main class="main-content">
+
+    <div class="container">
+
+      <div class="search-row mb-4">
+
+        <input
+
+          type="search"
+
+          class="form-control search-box"
+
+          id="search-input"
+
+          placeholder="Search coins or news…"
+
+          autocomplete="off"
+
+          aria-label="Search coins and news"
+
+        >
+
+        <button type="button" class="btn theme-toggle-btn" id="theme-toggle" aria-label="Switch to light mode">
+
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+
+        </button>
+
+      </div>
+
+
+
+      <div class="row g-4">
+
+        <div class="col-lg-8">
+
+          <div class="section-header">
+
+            <h2 class="h5 mb-0">Top Cryptocurrencies</h2>
+
+            <select class="form-select form-select-sm sort-select" id="sort-select" aria-label="Sort cryptocurrencies">
+
+              <option value="rank">Default (market cap rank)</option>
+
+              <option value="price_desc">Price: highest to lowest</option>
+
+              <option value="price_asc">Price: lowest to highest</option>
+
+              <option value="perf_desc">24h performance: best to worst</option>
+
+              <option value="perf_asc">24h performance: worst to best</option>
+
+              <option value="date_asc">Release date: oldest to newest</option>
+
+              <option value="date_desc">Release date: newest to oldest</option>
+
+            </select>
+
+          </div>
+
+          <div class="row g-3" id="coin-grid"></div>
+
+          <p class="empty-state d-none" id="coins-empty">No coins match your search.</p>
+
+        </div>
+
+
+
+        <div class="col-lg-4 sidebar-column">
+
+          <div class="pick-panel" id="pick-panel"></div>
+
+
+
+          <h2 class="h5 mb-3 news-heading">Crypto News</h2>
+
+          <div class="news-panel">
+
+            <ul class="list-group list-group-flush" id="news-list"></ul>
+
+          </div>
+
+          <p class="empty-state d-none" id="news-empty">No news match your search.</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container text-center">
+      <p class="mb-0">
+        Created by <a href="https://github.com/xandermckie" target="_blank" rel="noopener noreferrer">Xander McKie</a>
+      </p>
+    </div>
+  </footer>
+
+  <div class="coin-modal-overlay" id="coin-modal" aria-hidden="true" role="dialog" aria-modal="true">
+
+    <div class="coin-modal-panel">
+
+      <button type="button" class="modal-close-btn" id="modal-close" aria-label="Close">&times;</button>
+
+      <div id="modal-body"></div>
+
+    </div>
+
+  </div>
+
+
+
+  <script type="application/json" id="initial-data">
+
+    {{ {
+
+      'coins': coins,
+
+      'news': news,
+
+      'pick_of_day': pick_of_day,
+
+      'last_updated': last_updated,
+
+      'stale': stale
+
+    } | tojson }}
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+
+</html>
+
+

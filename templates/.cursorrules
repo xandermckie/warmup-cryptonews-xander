@@ -1,0 +1,6 @@
+## Frontend rules (templates/)
+
+- Use Bootstrap 5 via CDN; dark theme via `data-bs-theme="dark"` and `static/style.css`.
+- Never embed API keys in HTML or JavaScript.
+- Use `fetch()` for `/search` — no full page reload for filter/search.
+- Keep client scripts at the bottom of `index.html` unless a separate static JS file is needed.
