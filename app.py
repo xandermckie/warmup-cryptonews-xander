@@ -36,16 +36,13 @@ def index():
 @app.route("/search")
 def search():
     q = request.args.get("q", "")
-    if q is None:
-        q = ""
     q = str(q).strip()
     if not q:
         return jsonify({"error": "Query parameter 'q' is required."}), 400
     if len(q) > MAX_QUERY_LENGTH:
         return jsonify({"error": f"Query must be at most {MAX_QUERY_LENGTH} characters."}), 400
+    return jsonify(filter_cache(q))
 
-    result = filter_cache(q)
-    return jsonify(result)
 
 
 @app.route("/coin/<coin_id>")

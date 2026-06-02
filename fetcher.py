@@ -95,29 +95,25 @@ def save_cache(data: dict) -> None:
     with open(CACHE_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
 
-
 def fetch_coins() -> list:
     """Fetch top 50 coins by market cap from CoinGecko."""
     response = requests.get(COINGECKO_URL, timeout=REQUEST_TIMEOUT)
     response.raise_for_status()
     raw = response.json()
+    
+    # Fields to extract from each coin; use .get() for optional ones.
+    fields = [
+        "id", "symbol", "name",
+        "image", "current_price", "price_change_percentage_24h",
+        "market_cap_rank", "ath", "ath_change_percentage",
+    ]
+    defaults = {field: "" if field == "image" else None for field in fields}
+    
     return [
-        {
-            "id": coin["id"],
-            "symbol": coin["symbol"],
-            "name": coin["name"],
-            "image": coin.get("image", ""),
-            "current_price": coin.get("current_price"),
-            "price_change_percentage_24h": coin.get("price_change_percentage_24h"),
-            "market_cap_rank": coin.get("market_cap_rank"),
-            # Used by the sidebar "pick of the day" heuristic (not financial advice).
-            "ath": coin.get("ath"),
-            "ath_change_percentage": coin.get("ath_change_percentage"),
-            "genesis_date": None,
-        }
+        {field: coin.get(field, defaults[field]) for field in fields}
+        | {"genesis_date": None}  # Add genesis_date placeholder for enrichment.
         for coin in raw
     ]
-
 
 def _fetch_genesis_date(coin_id: str) -> str | None:
     """Fetch genesis_date for one coin using CoinGecko's lightweight detail endpoint."""
