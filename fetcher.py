@@ -3,6 +3,7 @@
 import json
 import os
 import re
+import threading
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -11,7 +12,11 @@ from zoneinfo import ZoneInfo
 import requests
 from dotenv import load_dotenv
 
+from fetch_log import append_fetch_event
+
 load_dotenv()
+
+_refresh_lock = threading.Lock()
 
 CACHE_PATH = Path(__file__).parent / "data" / "cache.json"
 COINGECKO_URL = (
@@ -31,6 +36,7 @@ GENESIS_FETCH_DELAY_SEC = 2.0
 def _empty_cache() -> dict:
     return {
         "last_updated": None,
+        "last_successful_fetch": None,
         "stale": True,
         "fetch_errors": [],
         "coins": [],
@@ -104,6 +110,7 @@ def _normalize_cache(data) -> dict:
     stale_key_present = "stale" in data
     normalized = {
         "last_updated": _normalize_last_updated(data.get("last_updated")),
+        "last_successful_fetch": _normalize_last_updated(data.get("last_successful_fetch")),
         "stale": _normalize_stale(data.get("stale"), stale_key_present),
         "fetch_errors": _normalize_string_list(data.get("fetch_errors")),
         "coins": _normalize_coin_list(data.get("coins")),
@@ -445,42 +452,74 @@ def fetch_news() -> list:
     return articles
 
 
-def refresh_cache() -> dict:
+def refresh_cache(trigger: str = "scheduler") -> dict:
     """Fetch fresh data, merge with stale fallback on failure, write cache."""
-    previous = load_cache()
-    errors: list[str] = []
-    coins = previous.get("coins", [])
-    news = previous.get("news", [])
-    any_success = False
+    if not _refresh_lock.acquire(blocking=False):
+        return {"locked": True}
 
+    started = time.perf_counter()
     try:
-        coins = fetch_coins()
-        coins = enrich_coins_with_genesis(coins, previous.get("coins", []))
-        any_success = True
-    except (requests.RequestException, ValueError) as exc:
-        errors.append(f"CoinGecko: {exc}")
+        previous = load_cache()
+        errors: list[str] = []
+        coins = previous.get("coins", [])
+        news = previous.get("news", [])
+        any_success = False
 
-    try:
-        news = fetch_news()
-        any_success = True
-    except (requests.RequestException, ValueError) as exc:
-        errors.append(f"NewsAPI: {exc}")
+        try:
+            coins = fetch_coins()
+            coins = enrich_coins_with_genesis(coins, previous.get("coins", []))
+            any_success = True
+        except (requests.RequestException, ValueError) as exc:
+            errors.append(f"CoinGecko: {exc}")
 
-    now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    stale = len(errors) > 0
-    if not any_success and not previous.get("coins") and not previous.get("news"):
-        stale = True
+        try:
+            news = fetch_news()
+            any_success = True
+        except (requests.RequestException, ValueError) as exc:
+            errors.append(f"NewsAPI: {exc}")
 
-    data = {
-        "last_updated": now,
-        "stale": stale,
-        "fetch_errors": errors,
-        "coins": coins,
-        "news": news,
-        "pick_of_day": compute_pick_of_day(coins) if coins else previous.get("pick_of_day"),
-    }
-    save_cache(data)
-    return data
+        now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        stale = len(errors) > 0
+        if not any_success and not previous.get("coins") and not previous.get("news"):
+            stale = True
+
+        if not errors:
+            status = "success"
+        elif any_success:
+            status = "partial"
+        else:
+            status = "failure"
+
+        last_successful_fetch = previous.get("last_successful_fetch")
+        if status == "success":
+            last_successful_fetch = now
+
+        data = {
+            "last_updated": now,
+            "last_successful_fetch": last_successful_fetch,
+            "stale": stale,
+            "fetch_errors": errors,
+            "coins": coins,
+            "news": news,
+            "pick_of_day": compute_pick_of_day(coins) if coins else previous.get("pick_of_day"),
+        }
+        save_cache(data)
+
+        duration_ms = int((time.perf_counter() - started) * 1000)
+        append_fetch_event(
+            {
+                "timestamp": now,
+                "trigger": trigger,
+                "status": status,
+                "coin_count": len(coins),
+                "news_count": len(news),
+                "duration_ms": duration_ms,
+                "errors": errors,
+            }
+        )
+        return data
+    finally:
+        _refresh_lock.release()
 
 
 def filter_cache(query: str, cache: dict | None = None) -> dict:

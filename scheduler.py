@@ -1,6 +1,7 @@
 """Background cache refresh every 15 minutes."""
 
 import os
+from functools import partial
 
 from apscheduler.schedulers.background import BackgroundScheduler
 
@@ -24,11 +25,11 @@ def init_scheduler(app) -> None:
     if _scheduler is not None:
         return
 
-    refresh_cache()
+    refresh_cache(trigger="startup")
 
     _scheduler = BackgroundScheduler(daemon=True)
     _scheduler.add_job(
-        refresh_cache,
+        partial(refresh_cache, trigger="scheduler"),
         "interval",
         minutes=15,
         id="cache_refresh",
